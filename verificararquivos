@@ -1,0 +1,31 @@
+import os
+
+def buscar_arquivos(diretorio, extensao=None, nome_parcial=None):
+
+    arquivos_encontrados = []
+
+    for root, dirs, files in os.walk(diretorio):# anda entre o diretorio e suas pastas,ajuda obter informaçoes
+        for file in files:
+            if extensao and not file.endswith(extensao):#se o arquivo é txt, bat etc
+                continue
+            if nome_parcial and nome_parcial not in file:#nome dos arquivos
+                continue
+            arquivos_encontrados.append(os.path.join(root, file))
+
+    return arquivos_encontrados
+
+
+
+if _name_ == "_main_":#comparar igualdade ==; verifica se o programa esta sendo executado
+    diretorio_para_buscar = input("Digite o diretório onde deseja buscar os arquivos: ")
+    extensao = input("Digite a extensão do arquivo (exemplo: .txt) ou deixe vazio: ") or None
+    nome_parcial = input("Digite parte do nome do arquivo ou deixe vazio: ") or None
+
+    arquivos = buscar_arquivos(diretorio_para_buscar, extensao, nome_parcial)
+
+    if arquivos:
+        print("\nArquivos encontrados:")
+        for arquivo in arquivos:
+            print(arquivo)
+    else:
+        print("Nenhum arquivo encontrado.")
