@@ -16,7 +16,7 @@ def buscar_arquivos(diretorio, extensao=None, nome_parcial=None):
 
 
 
-if _name_ == "_main_":#comparar igualdade ==; verifica se o programa esta sendo executado
+if __name__ == "__main__":#comparar igualdade ==; verifica se o programa esta sendo executado
     diretorio_para_buscar = input("Digite o diretório onde deseja buscar os arquivos: ")
     extensao = input("Digite a extensão do arquivo (exemplo: .txt) ou deixe vazio: ") or None
     nome_parcial = input("Digite parte do nome do arquivo ou deixe vazio: ") or None
